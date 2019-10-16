@@ -156,6 +156,8 @@ Error message and password prompt
 
 <li>$:/boa/custom-installed/shiraz</li>
 
+<li>$:/boa/custom-installed/shiraz-to-do-list</li>
+
 <li>$:/boa/custom-installed/tocP</li>
 
 <li>$:/boa/custom-installed/wiki-settings</li>
@@ -205,8 +207,6 @@ Error message and password prompt
 <li>$:/boa/custom-todo/context-filter</li>
 
 <li>$:/boa/custom-todo/pluginlib</li>
-
-<li>$:/boa/custom-todo/shiraz-to-do-list</li>
 
 <li>$:/boa/custom-todo/tooltip</li>
 
@@ -444,6 +444,32 @@ Error message and password prompt
 * документація -- https://kookma.github.io/Shiraz/#Shiraz%20Tutorial
 
 {{$:/boa/macro/info-blocks}}</pre>
+</div>
+<div caption="Tasks" created="20180615032251583" creator="Mohammad" modified="20191012105320553" modifier="Mohammad" order="022" title="$:/boa/custom-installed/shiraz-to-do-list" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! Простий, але класний перелік завдань
+
+* Запозичено тут [[https://kookma.github.io/Shiraz/#shiraz%2Fto-do-list]]. 
+* Використовує шаблон [[$:/boa/template/task-management-draggable]].
+
+!! ''Поточні завдання''
+
+&lt;$button class=&quot;btn btn-primary&quot;&gt;
+&lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;now format:&quot;DD-MM-YYYY&quot;&gt;&gt; tags=&quot;Task&quot; text=&quot;&quot;/&gt;
+''Нове завдання''
+&lt;/$button&gt;
+
+&lt;&lt;alert-info &quot;Завдання можна перетаскувати для зміни їхнього порядку&quot;&gt;&gt;
+
+&lt;&lt;list-tagged-draggable tag:&quot;Task&quot; subFilter:&quot;!has[draft.of]!tag[Done]&quot; itemTemplate:&quot;$:/boa/template/task-management-draggable&quot; emptyMessage:&quot;Немає жодного активного завдання&quot;&gt;&gt;
+
+!! ''Виконані завдання''
+
+&lt;&lt;alert-info &quot;Перелік завдань наведений у зворотньому хронологічному порядку по даті  утворення&quot;&gt;&gt;
+
+&lt;$list filter=&quot;[!has[draft.of]tag[Task]tag[Done]!sort[created]]&quot;&gt;
+&lt;$checkbox tag=&quot;Done&quot;&gt;&lt;$link&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/$checkbox&gt;&lt;br/&gt;
+&lt;/$list&gt;
+</pre>
 </div>
 <div caption="tocP" created="20190823100034124" modified="20190928121631001" order="014" tags="" title="$:/boa/custom-installed/tocP" revision="0" bag="default">
 <pre>!! ''Плагін //tocP//''
@@ -749,34 +775,6 @@ Error message and password prompt
 Всі обрані (встановлені і рекомендовані) плагіни зібрати у власну бібліотеку і підключити до цього шаблону вікі так чином, щоб вона була доступна через //Панель Управління//. 
 
 Створити власну біліотеку плагінів допоможе інструкція на [[сайті автора Jed Carty|http://inmysocks.tiddlyspot.com/#Making%20a%20Plugin%20Library]]
-</pre>
-</div>
-<div caption="Tasks" created="20180615032251583" creator="Mohammad" modified="20190927073116559" modifier="Mohammad" order="071" title="$:/boa/custom-todo/shiraz-to-do-list" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>!! Простий, але класний перелік завдань
-
-* Запозичено тут [[https://kookma.github.io/Shiraz/#shiraz%2Fto-do-list]]. 
-* Використовує шаблон [[$:/boa/template/task-management-draggable]].
-
-&lt;&lt;alert-danger &quot;Застосунок з цього тідлера працює нестабільно під //~BobEXE// -- після декількох маніпуляцій із завданнями //~BobEXE// вимикається. Треба звернутись до автора //Mohammed//!&quot;&gt;&gt;
-
-!! ''Поточні завдання''
-
-&lt;$button class=&quot;btn btn-primary&quot;&gt;
-&lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;now format:&quot;DD-MM-YYYY&quot;&gt;&gt; tags=&quot;Task&quot; text=&quot;&quot;/&gt;
-''Нове завдання''
-&lt;/$button&gt;
-
-&lt;&lt;alert-info &quot;Завдання можна перетаскувати для зміни їхнього порядку&quot;&gt;&gt;
-
-&lt;&lt;list-tagged-draggable tag:&quot;Task&quot; subFilter:&quot;!has[draft.of]!tag[Done]&quot; itemTemplate:&quot;$:/boa/template/task-management-draggable&quot; emptyMessage:&quot;Немає жодного активного завдання&quot;&gt;&gt;
-
-!! ''Виконані завдання''
-
-&lt;&lt;alert-info &quot;Перелік завдань наведений у зворотньому хронологічному порядку по даті  утворення&quot;&gt;&gt;
-
-&lt;$list filter=&quot;[!has[draft.of]tag[Task]tag[Done]!sort[created]]&quot;&gt;
-&lt;$checkbox tag=&quot;Done&quot;&gt;&lt;$link&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/$checkbox&gt;&lt;br/&gt;
-&lt;/$list&gt;
 </pre>
 </div>
 <div caption="Tooltip" created="20190825135613219" modified="20190825220019571" order="072" tags="" title="$:/boa/custom-todo/tooltip" revision="0" bag="default">
@@ -10676,11 +10674,11 @@ Error message and password prompt
 <div created="20190925190449505" list="[[Завдання № 01]] [[Завдання № 02]]" modified="20190926144508278" title="Task" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20190925185251989" modified="20190929180235433" tags="Task" title="task/Завдання № 01" revision="0" bag="default">
+<div created="20190925185251989" modified="20191013074243877" tags="Done Task" title="task/Завдання № 01" revision="0" bag="default">
 <pre>Вже давно відомо, що читабельний зміст буде заважати зосередитись людині, яка оцінює композицію сторінки. Сенс використання Lorem Ipsum полягає в тому, що цей текст має більш-менш нормальне розподілення літер на відміну від, наприклад, &quot;Тут іде текст. Тут іде текст.&quot; 
 </pre>
 </div>
-<div created="20190925185555487" modified="20190927051853023" tags="Done Task" title="task/Завдання № 02" revision="0" bag="default">
+<div created="20190925185555487" modified="20191013074245027" tags="Done Task" title="task/Завдання № 02" revision="0" bag="default">
 <pre>Це робить текст схожим на оповідний. Багато програм верстування та веб-дизайну використовують Lorem Ipsum як зразок і пошук за терміном &quot;lorem ipsum&quot; відкриє багато веб-сайтів, які знаходяться ще в зародковому стані. Різні версії Lorem Ipsum з'явились за минулі роки, деякі випадково, деякі було створено зумисно (зокрема, жартівливі).</pre>
 </div>
 <div caption="My tools" created="20190922160821388" modified="20190928130629371" tags="$:/tags/SideBar" title="Додаткові інструменти" revision="0" bag="default">

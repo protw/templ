@@ -1,18 +1,16 @@
 caption: Tasks
 created: 20180615032251583
 creator: Mohammad
-modified: 20190927073116559
+modified: 20191012105320553
 modifier: Mohammad
-order: 071
-title: $:/boa/custom-todo/shiraz-to-do-list
+order: 022
+title: $:/boa/custom-installed/shiraz-to-do-list
 type: text/vnd.tiddlywiki
 
 !! Простий, але класний перелік завдань
 
 * Запозичено тут [[https://kookma.github.io/Shiraz/#shiraz%2Fto-do-list]]. 
 * Використовує шаблон [[$:/boa/template/task-management-draggable]].
-
-<<alert-danger "Застосунок з цього тідлера працює нестабільно під //~BobEXE// -- після декількох маніпуляцій із завданнями //~BobEXE// вимикається. Треба звернутись до автора //Mohammed//!">>
 
 !! ''Поточні завдання''
 
