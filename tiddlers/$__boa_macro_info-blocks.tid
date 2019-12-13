@@ -1,22 +1,22 @@
 created: 20190925174625266
-modified: 20190928130608950
+modified: 20191213185738719
 tags: $:/tags/Macro
 title: $:/boa/macro/info-blocks
 
 \define alert-primary(text)
-<<alert primary text:"<div style='float:left;width:7%;'>[img [$:/boa/img/fa5/list-alt.svg]]</div><div style='float:left;width:90%;'>$text$</div><div style='clear:both;'/>" class:"leftbar border-primary">>
+<<alert primary src:"<div style='float:left;width:7%;'>[img [$:/boa/img/fa5/list-alt.svg]]</div><div style='float:left;width:90%;'>$text$</div><div style='clear:both;'/>" class:"leftbar border-primary">>
 \end
 \define alert-danger(text)
-<<alert danger text:"<div style='float:left;width:7%;'>[img [$:/boa/img/fa5/hand-paper.svg]]</div><div style='float:left;width:90%;'>$text$</div><div style='clear:both;'/>" class:"leftbar border-danger">>
+<<alert danger src:"<div style='float:left;width:7%;'>[img [$:/boa/img/fa5/hand-paper.svg]]</div><div style='float:left;width:90%;'>$text$</div><div style='clear:both;'/>" class:"leftbar border-danger">>
 \end
 \define alert-warning(text)
-<<alert warning text:"<div style='float:left;width:7%;'>[img [$:/boa/img/fa5/exclamation-triangle.svg]]</div><div style='float:left;width:90%;'>$text$</div><div style='clear:both;'/>" class:"leftbar border-warning">>
+<<alert warning src:"<div style='float:left;width:7%;'>[img [$:/boa/img/fa5/exclamation-triangle.svg]]</div><div style='float:left;width:90%;'>$text$</div><div style='clear:both;'/>" class:"leftbar border-warning">>
 \end
 \define alert-info(text)
-<<alert info text:"<div style='float:left;width:7%;'>[img [$:/boa/img/fa5/info-circle.svg]]</div><div style='float:left;width:90%;'>$text$</div><div style='clear:both;'/>" class:"leftbar border-info">>
+<<alert info src:"<div style='float:left;width:7%;'>[img [$:/boa/img/fa5/info-circle.svg]]</div><div style='float:left;width:90%;'>$text$</div><div style='clear:both;'/>" class:"leftbar border-info">>
 \end
 \define alert-success(text)
-<<alert success text:"<div style='float:left;width:7%;'>[img [$:/boa/img/fa5/thumb-up.svg]]</div><div style='float:left;width:90%;'>$text$</div><div style='clear:both;'/>" class:"leftbar border-success">>
+<<alert success src:"<div style='float:left;width:7%;'>[img [$:/boa/img/fa5/thumb-up.svg]]</div><div style='float:left;width:90%;'>$text$</div><div style='clear:both;'/>" class:"leftbar border-success">>
 \end
 
 !! ''Інфоблоки з іконками''
