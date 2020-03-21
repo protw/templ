@@ -1,0 +1,9 @@
+caption: My tools
+created: 20190922160821388
+modified: 20200321094047399
+tags: $:/tags/SideBar
+title: Додаткові інструменти
+
+
+<<tabs "$:/boa/custom-installed-list $:/boa/custom-recommended-list  $:/boa/custom-todo-list" "$:/boa/custom-installed-list">>
+ 
