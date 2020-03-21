@@ -1,10 +1,12 @@
-tags: Довкілля
+created: 20190802062058471
+modified: 20190927092405919
+tags: Tiddlywiki
 title: $:/boa/logo
 type: image/svg+xml
-wiki-address: https://protw.github.io/exhazoom
-wiki-caption: Проєкт з відстеження найбільших забруднювачів серед транспортних засобів
-wiki-created: 202003117140650967
-wiki-github: https://github.com/protw/exhazoom
-wiki-modified: 20200317145919355
-wiki-name: ExhaZOOM
-wiki-order: 120
+wiki-address: https://protw.github.io/templ
+wiki-caption: Це шаблон вікі. Включає лого з полями та базові інструменти.
+wiki-created: 20190712140650967
+wiki-github: https://github.com/protw/templ
+wiki-modified: 20190815145919355
+wiki-name: Wiki Template
+wiki-order: 100
