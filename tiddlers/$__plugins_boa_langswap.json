@@ -1,105 +1,81 @@
 {
     "tiddlers": {
         "Eng": {
-            "created": "20200321072559618",
             "text": "<<simple-navigation tag:Eng>>\n",
-            "langswap": "yes",
             "title": "Eng",
             "tags": "$:/tags/ViewTemplate",
             "swap": "Ukr",
             "list": "[[Issue and solution]] [[High emitters.svg]] [[Operation principle.svg]] [[Data collection.svg]] [[Technical characteristics.svg]] [[Operator workplace.svg]] [[Compulsory measures.svg]] [[Kyiv Public Budget Project]]",
             "icon": "$:/plugins/boa/langswap/img/GBR.svg",
-            "color": "#eae7c1",
-            "modified": "20200321073610506"
+            "color": "#eae7c1"
         },
         "Ukr": {
-            "created": "20200321072649296",
             "text": "<<simple-navigation tag:Ukr>>",
-            "langswap": "yes",
             "title": "Ukr",
             "tags": "$:/tags/ViewTemplate",
             "swap": "Eng",
             "list": "[[Проблема і рішення]] [[Основні забруднювачі.svg]] [[Принцип дії.svg]] [[Збір даних.svg]] [[Технічні характеристики.svg]] [[Робочі місця оператора.svg]] [[Примусові заходи.svg]] [[Проєкт Громадського бюджета Києва]]",
             "icon": "$:/plugins/boa/langswap/img/UKR.svg",
-            "color": "#eae7c1",
-            "modified": "20200321073304046"
+            "color": "#eae7c1"
         },
         "$:/plugins/boa/langswap/readme": {
             "title": "$:/plugins/boa/langswap/readme",
-            "langswap": "yes",
             "text": "Plugin is:\n\n* titled <<mono \"BOA - Language page swapper\">>,\n* placed locally at [[$:/plugins/boa/langswap]],\n* placed globally at [[https://protw.github.io/templ]],\n* dependent on other plugins Shiraz and Utility.\n\nThe plugin sets an additional button <<doc-svg $:/plugins/boa/langswap/swap.svg>> at the top right of a tiddler intended for switching between identical pages in //Ukrainian// and //English//. The name of the translated matching tiddler is written in the tiddler field <<mono swap>>.\n\nFor example, we have two matching tiddlers titled <<mono Стаття>> and <<mono Article>>, respectively in Ukrainian and English. In order to ensure correct transition from tiddler <<mono Стаття>> in its field <<mono swap>> the value ''Article'' must be specified, and in tiddler <<mono Article>> in the same field <<mono swap>> -- the value ''Стаття'', respectively. Also, each of the two tiddlers must be tagged with their language, <<tag Ukr>> or <<tag Eng>>, respectively.\n\nAdditionally, the plugin creates two tag tiddlers [[Ukr]] and [[Eng]], each of which stores an ordered list of all the tiddlers tagged with the ''Ukr'' or ''Eng'', respectively. Moreover, the order of the tiddlers in these lists can be rearranged using //drag-and-drop// by pre-clicking on the tag icon ''Ukr'' or ''Eng''. And that's not all - there are a couple of navigation buttons <<mono \"previous | next\">> in the bottom of each tiddler from the list. The functionality specified here is provided with a <<mono \"simple-navigation\">> macros, which is part of the plugin [[$:/plugins/kookma/utility]].\n\nAlso, the plugin creates two plane content tables <<mono Зміст>> and <<mono Content>> based on the [[Ukr]] and [[Eng]] tags, respectively. These two tables of content are placed in the sidebar under <<mono Content-Зміст>> tab."
         },
+        "$:/plugins/boa/langswap/Component-description": {
+            "text": "This plugin contains the following shadow tiddlers:\n\n|table-striped-row|k\n|!Component|!Description|\n|^[[$:/plugins/boa/langswap/Зміст]] |^A plane TOC of tiddlers tagged with ''Ukr'', the list of tiddlers is sortable (draggable) one |\n|^$:/plugins/boa/langswap/Content |^A plane TOC of tiddlers tagged with ''Eng'', the list of tiddlers is sortable (draggable) one |\n|^[[$:/plugins/boa/langswap/Content-Зміст]] |^Combination of two TOCs for ''Ukr'' and ''Eng'' under macros `<<tabs>>`, this tiddler is placed to the sidebar>>|\n|^$:/plugins/boa/langswap/img/GBR.svg |^Great Britain's flag |\n|^$:/plugins/boa/langswap/img/swap.svg |^Tiddler swap button image, placed the top right of a tiddler  |\n|^$:/plugins/boa/langswap/img/UKR.svg |^Ukrainian flag |\n|^$:/plugins/boa/langswap/readme |^Readme |\n|^$:/plugins/boa/langswap/swapbutton |^The swap button macro code |\n|^[[Eng]] |^Tag ''Eng'' tiddler, contains `previous | next` navigation macros `<<simple-navigation tag:Eng>>` |\n|^[[Ukr]] |^Tag ''Ukr'' tiddler, contains `previous | next` navigation macros `<<simple-navigation tag:Ukr>>` |",
+            "title": "$:/plugins/boa/langswap/Component-description"
+        },
         "$:/plugins/boa/langswap/img/GBR.svg": {
-            "created": "20200321071849543",
             "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"480\" width=\"640\" viewBox=\"0 0 640 480\">\n  <defs>\n    <clipPath id=\"a\">\n      <path fill-opacity=\".67\" d=\"M-85.333 0h682.67v512h-682.67z\"/>\n    </clipPath>\n  </defs>\n  <g clip-path=\"url(#a)\" transform=\"translate(80) scale(.94)\">\n    <g stroke-width=\"1pt\">\n      <path fill=\"#006\" d=\"M-256 0H768.02v512.01H-256z\"/>\n      <path d=\"M-256 0v57.244l909.535 454.768H768.02V454.77L-141.515 0H-256zM768.02 0v57.243L-141.515 512.01H-256v-57.243L653.535 0H768.02z\" fill=\"#fff\"/>\n      <path d=\"M170.675 0v512.01h170.67V0h-170.67zM-256 170.67v170.67H768.02V170.67H-256z\" fill=\"#fff\"/>\n      <path d=\"M-256 204.804v102.402H768.02V204.804H-256zM204.81 0v512.01h102.4V0h-102.4zM-256 512.01L85.34 341.34h76.324l-341.34 170.67H-256zM-256 0L85.34 170.67H9.016L-256 38.164V0zm606.356 170.67L691.696 0h76.324L426.68 170.67h-76.324zM768.02 512.01L426.68 341.34h76.324L768.02 473.848v38.162z\" fill=\"#c00\"/>\n    </g>\n  </g>\n</svg>\n",
-            "langswap": "yes",
             "type": "image/svg+xml",
             "title": "$:/plugins/boa/langswap/img/GBR.svg",
             "num_un": "826",
             "dial_code": "44",
             "country_en": "[[United Kingdom]]",
             "a3_un": "GBR",
-            "a2_iso": "GB",
-            "modified": "20200321071926318"
+            "a2_iso": "GB"
         },
         "$:/plugins/boa/langswap/img/UKR.svg": {
-            "created": "20200321072004336",
             "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"480\" width=\"640\" viewBox=\"0 0 640 480\">\n  <g fill-rule=\"evenodd\" stroke-width=\"1pt\">\n    <path fill=\"#ffd500\" d=\"M0 0h640v480H0z\"/>\n    <path fill=\"#005bbb\" d=\"M0 0h640v240H0z\"/>\n  </g>\n</svg>\n",
-            "langswap": "yes",
             "type": "image/svg+xml",
             "title": "$:/plugins/boa/langswap/img/UKR.svg",
             "num_un": "804",
             "dial_code": "380",
             "country_en": "Ukraine",
             "a3_un": "UKR",
-            "a2_iso": "UA",
-            "modified": "20200321072014419"
+            "a2_iso": "UA"
         },
         "$:/plugins/boa/langswap/img/swap.svg": {
-            "created": "20200321072035262",
             "text": "<svg class=\"tc-image-exchange-alt tc-image-button\" width=\"22pt\" height=\"22pt\" viewBox=\"0 0 512 512\"><path d=\"M0 168v-16c0-13.255 10.745-24 24-24h360V80c0-21.367 25.899-32.042 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.956 271.982 384 261.456 384 240v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.314-25.862-32.08-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.057 463.997 128 453.437 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z\"/></svg>",
-            "langswap": "yes",
             "title": "$:/plugins/boa/langswap/img/swap.svg",
             "tags": "$:/tags/Image",
-            "caption": "exchange-alt (Solid)",
-            "modified": "20200321072038139"
+            "caption": "exchange-alt (Solid)"
         },
         "$:/plugins/boa/langswap/swapbutton": {
-            "created": "20200321072055090",
             "text": "<$button class=<<tv-config-toolbar-class>>>\n<$action-navigate $to={{!!swap}}/>\n<span title={{!!swap}}>{{$:/plugins/boa/langswap/img/swap.svg}}</span>\n</$button>",
-            "langswap": "yes",
             "type": "text/vnd.tiddlywiki",
             "title": "$:/plugins/boa/langswap/swapbutton",
-            "tags": "$:/tags/ViewToolbar",
-            "modified": "20200321072444554"
+            "tags": "$:/tags/ViewToolbar"
         },
         "$:/plugins/boa/langswap/Content": {
-            "created": "20200321072128709",
             "text": "<<tag Eng>>\n<div class=\"sh-multicol2\">\n<<list-links \"[list[Eng]]\" \"ol\">>\n</div>",
-            "langswap": "yes",
             "title": "$:/plugins/boa/langswap/Content",
             "swap": "$:/plugins/boa/langswap/Зміст",
             "icon": "$:/favicon.ico",
-            "modified": "20200321073411154",
             "caption": "Content"
         },
         "$:/plugins/boa/langswap/Зміст": {
-            "created": "20200321072204674",
             "text": "<<tag Ukr>>\n<div class=\"sh-multicol2\">\n<<list-links \"[list[Ukr]]\" \"ol\">>\n</div>",
-            "langswap": "yes",
             "title": "$:/plugins/boa/langswap/Зміст",
             "swap": "$:/plugins/boa/langswap/Content",
             "icon": "$:/favicon.ico",
-            "modified": "20200321073201527",
             "caption": "Зміст"
         },
         "$:/plugins/boa/langswap/Content-Зміст": {
-            "created": "20200321072227191",
             "text": "<<tabs \"$:/plugins/boa/langswap/Content $:/plugins/boa/langswap/Зміст\" \"$:/plugins/boa/langswap/Content\">> ",
-            "langswap": "yes",
             "title": "$:/plugins/boa/langswap/Content-Зміст",
             "tags": "$:/tags/SideBar",
-            "modified": "20200321073901819",
             "caption": "Content-Зміст",
             "list-after": "$:/core/ui/SideBar/More"
         }
