@@ -1,0 +1,10 @@
+color: #eae7c1
+created: 20200330074412808
+icon: $:/plugins/boa/langswap/img/UKR.svg
+list: [[Проблема і рішення]] [[Основні забруднювачі.svg]] [[Принцип дії.svg]] [[Збір даних.svg]] [[Технічні характеристики.svg]] [[Робочі місця оператора.svg]] [[Примусові заходи.svg]] [[Громадський проект розумного міста]]
+modified: 20200330074415342
+swap: Eng
+tags: $:/tags/ViewTemplate
+title: Ukr
+
+<<simple-navigation tag:Ukr>>
