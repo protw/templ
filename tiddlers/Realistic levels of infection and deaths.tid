@@ -1,0 +1,35 @@
+created: 20200411141449530
+modified: 20200411151944895
+swap: Реалістичні рівні інфекції та смертності
+tags: Eng
+title: Realistic levels of infection and deaths
+
+These weeks, terms like "number of infected", "number of sick" or "death rate" are constantly being heard in the media. In most cases, such definitions have little to do with the real picture.
+
+In fact, data published from official sources, such as WHO or Johns Hopkins University, operate $$C$$ - //confirmed// COVID-19 infection cases for a separate administrative entity. This includes values: $$D$$ //deaths// and $$R$$ //recovered//. For more information on the balance of these and other related variables, see [[When the pandemic ends?]].
+
+The baseline of confirmed cases of $$C$$ is, in fact, the magnitude of the detected infected persons among all the infected persons $$I$$ (the latter is actually unknown). The proportion of the detected cases $$C$$ among all the infected ones $$I$$, in the first approximation, is equal to the ratio of tests performed $$T$$ to the whole population $$P$$. Assigning this ratio as $$t$$ we get:
+
+$$
+t = \frac TP = \frac CI
+$$
+
+Thus, the total number of infected can be estimated as $$I = C/t$$. Thus, in the case when 100% of the population have been tested (i.e. $$t = 1$$), the number of confirmed cases will be identical to the number of infected persons: $$C = I$$.
+
+In early April 2020, regularly updated information on the absolute and relative (per 1 million population) number of confirmed cases and tests conducted in most countries began to appear in [[worldometers|https://www.worldometers.info/coronavirus/]] .
+
+The emergence of these data makes possible to estimate the total proportion of infected persons and the mortality (for COVID-19 reasons) relative to the population. These figures for some selected countries are shown in the graph below:
+
+<<image-basic deaths-vs-infected.png width:90% align:center>>
+
+As it is seen, population infection proportion is ranged from 1% to 40% and the mortality - from 0.003% to 0.2% (relative to the infection estimates).
+
+By the way, data on China are not available yet, which makes it impossible to estimate the real extent of infection in this country.
+
+It is clear that the figures obtained differ in methodology, and in some cases there are reasons to doubt their accuracy. The latter, in particular, concerns very low levels of overall infection and relative mortality.
+
+In the end, time will give its true assessment.
+
+The fully working [[Code for determination of the pandemic end]] is provided below.
+
+Stay tuned for our daily updates.

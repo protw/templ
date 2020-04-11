@@ -1,8 +1,7 @@
 caption: My tools
 created: 20190922160821388
 list-after: $:/core/ui/SideBar/More
-modified: 20200411063634377
-tags: $:/tags/SideBar
+modified: 20200411151432554
 title: Додаткові інструменти
 
 <<alert-primary "Короткий опис інструментів, встановлених для цієї вікі.">>
