@@ -1,5 +1,5 @@
 created: 20200411072913535
-modified: 20200411074854042
+modified: 20200411113307829
 revision: 0
 swap: Як визначити закінчення пандемії
 tags: Eng
@@ -58,3 +58,5 @@ $$
 $$
 
 Certainly questions left about the accuracy of the data, but that is another story.
+
+[[Code for determination of the pandemic end]] is presented next.
