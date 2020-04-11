@@ -1,0 +1,16 @@
+caption: My tools
+created: 20190922160821388
+list-after: $:/core/ui/SideBar/More
+modified: 20200411063634377
+tags: $:/tags/SideBar
+title: Додаткові інструменти
+
+<<alert-primary "Короткий опис інструментів, встановлених для цієї вікі.">>
+
+В процесі маніпуляцій додатковими інструментами у вікі користуйтесь рекомендаціями зі статті [[Управління додатковими інструментами]].
+
+<<tabs "[prefix[$:/boa/custom-installed/]!has[draft.of]sort[order]]" "$:/boa/custom-installed/logo-edit">>
+
+<style>
+  div.tc-tab-content>div.tc-reveal>p { padding-right:50px; }
+</style>
