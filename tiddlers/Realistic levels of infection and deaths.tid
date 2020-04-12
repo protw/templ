@@ -1,5 +1,5 @@
 created: 20200411141449530
-modified: 20200411151944895
+modified: 20200412143825868
 swap: Реалістичні рівні інфекції та смертності
 tags: Eng
 title: Realistic levels of infection and deaths
@@ -20,7 +20,7 @@ In early April 2020, regularly updated information on the absolute and relative 
 
 The emergence of these data makes possible to estimate the total proportion of infected persons and the mortality (for COVID-19 reasons) relative to the population. These figures for some selected countries are shown in the graph below:
 
-<<image-basic deaths-vs-infected.png width:90% align:center>>
+<<image-basic deaths-vs-infected.gif width:90% align:center>>
 
 As it is seen, population infection proportion is ranged from 1% to 40% and the mortality - from 0.003% to 0.2% (relative to the infection estimates).
 
