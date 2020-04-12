@@ -1,5 +1,5 @@
 created: 20200411072913535
-modified: 20200411130934583
+modified: 20200412114610974
 revision: 0
 swap: Коли закінчується пандемія?
 tags: Eng
@@ -9,7 +9,7 @@ title: When the pandemic ends?
 
 Using open data [[CSSEGISandData/COVID-19|https://github.com/CSSEGISandData/COVID-19]] we get daily data starting from 22.1.2020 on //confirmed// cases, //deaths// and //recovered// for 177 administrative entities including two cruise ships (MS Zaandam and Diamond Princess) and the Vatican. Based on the data obtained, we construct the parameter $$\alpha$$, which characterizes the proximity of the country exit from the pandemic - the closer the parameter $$\alpha$$ to 100%, the closer a country has approached the exit of the pandemic:
 
-<<image-basic closed-rel-confirmed.png width:90% align:center>>
+<<image-basic closed-rel-confirmed.gif width:90% align:center>>
 
 The chart presented, as of March 29, 2020, shows that China came closest to the exit of the pandemic (96.5%). Italy, in spite of all the problems, and France have reached 25% and lag behind that level of China by 5 weeks.
 
