@@ -1,5 +1,5 @@
 created: 20200411074231889
-modified: 20200411133056477
+modified: 20200413112616483
 tags: 
 title: Pandemic end determination code
 
@@ -7,10 +7,11 @@ title: Pandemic end determination code
 # CODE FOR DETERMINATION OF THE PANDEMIC END
 # Author: Olegh Bondarenko, https://protw.github.io/oleghbond
 # Date: 2020-03-29
-function covid
+function covid_anim
   # action == 1 - launches data update from the source and saves locally
   # action == 0 - uses the last data set stored locally
   action = 0;
+  disp(ifelse(action,'UPDATING THE DATA, STORE THEM LOCALLY, RETRIEVING THE DATA','RETRIEVING THE DATA'))
   if action
     DATA = check_covid_data;
     save data.mat DATA
@@ -31,46 +32,60 @@ function covid
          # 'Egypt' 'Spain' 'Singapore' 'Venezuela'
   # 'y_adjust' is of the same size and order as in 'flt'
   # it used to adjust vertical position of label 'country'
-  y_adjust = [1 1 1 1 1.025 1 1 1 1 1]; 
   
   x = days-days(1);
   y = (deaths'+recovered')./confirmed'*100;
   [~,iflt,jflt]=intersect(country,flt);
   y = y(:,iflt);
   date_range_str = [datestr(days(1),29) ' - ' datestr(days(end),29)];
-  for i = 1:length(flt)
-    legend_flt{i} = sprintf('%s - %d, %d, %d', flt{jflt(i)}, ...
-      confirmed(iflt(i),end), deaths(iflt(i),end), recovered(iflt(i),end));
+
+  Confirmed = confirmed;
+  Deaths = deaths;
+  Recovered = recovered;
+  X = x;
+  Y = y;
+
+  disp('BUILDING THE ANIMATION')
+  figure(1); set(gcf,'Visible','off');
+  for j = 2:length(days)  
+    confirmed = Confirmed(:,1:j);
+    deaths = Deaths(:,1:j);
+    recovered = Recovered(:,1:j);
+    x = X(1:j);
+    y = Y(1:j,:);
+    
+    for i = 1:length(flt)
+      legend_flt{i} = sprintf('%s - %d, %d, %d', flt{jflt(i)}, ...
+        confirmed(iflt(i),end), deaths(iflt(i),end), recovered(iflt(i),end));
+    endfor
+
+    y_world = (sum(deaths) + sum(recovered))./sum(confirmed)*100;
+    y_world = y_world';
+    y = [y y_world];
+    legend_flt{i+1} = sprintf('%s - %d, %d, %d', 'World', ...
+        sum(confirmed)(end), sum(deaths)(end), sum(recovered)(end));
+    date_range_str = datestr(days(j),29);
+    
+    figure(1)
+    plot(x,y);
+    set(gca,'ylim',[0 100],'xlim',[0 max(X)])
+    xlabel(['days, starting from ' datestr(days(1),29)])
+    ylabel('\alpha = (deaths+recovered)/confirmed, %')
+    title(['COVID-19: ' date_range_str]);
+    legend(legend_flt,'location','northwest');
+    legend('boxoff')
+    grid on
+    text(x(end)*ones(1,size(y,2)), y(end,:), [flt(jflt) 'World']);
+    text(1,98.5,'Country - confirmed, deaths, recovered')
+    
+    printf('PRINTING PNG # %d\n',j)
+    fig_file_name = ['movie\' datestr(days(j),'yymmdd') ' (r+d)div(c).png'];
+    print(fig_file_name)
   endfor
-
-  y_world = (sum(deaths) + sum(recovered))./sum(confirmed)*100;
-  y_world = y_world';
-  y = [y y_world];
-  legend_flt{i+1} = sprintf('%s - %d, %d, %d', 'World', ...
-      sum(confirmed)(end), sum(deaths)(end), sum(recovered)(end));
-  y_adjust = [y_adjust 0.945];
-  
-  figure(1)
-  plot(x,y)
-  xlabel(['days, starting from ' datestr(days(1),29)])
-  ylabel('\alpha = (deaths+recovered)/confirmed')
-  title(['COVID-19: ' date_range_str])
-  #legend(flt(jflt),'location','northwest')
-  legend(legend_flt,'location','northwest')
-  legend('boxoff')
-  #set(gca,'xscale','log')
-  grid on
-  text(x(end)*ones(1,size(y,2)),
-    y(end,:).*[y_adjust(jflt) y_adjust(end)],[flt(jflt) 'World'])
-  text(41,98.5,'Country - confirmed, deaths, recovered')
-  
-  xlim = get(gca,'xlim');
-  xlim(1) = 40;
-  set(gca,'xlim',xlim)
-
-  fig_file_name = [datestr(days(end),'yymmdd') ' (r+d)div(c).png'];
-  print(fig_file_name)
-  1;
+  figure(1); set(gcf,'Visible','on');
+  disp('COMPOSING THE GIF')
+  system('magick -delay 35 -loop 3 movie\200*.png closed-rel-confirmed.gif');
+  disp('DONE!')
 endfunction
 
 function DATA = check_covid_data
@@ -157,18 +172,18 @@ function DAT = convert_struct
 endfunction
 
 function data_src = get_data_src
-time_series_covid19_path = [...
+  time_series_covid19_path = [...
     'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/'...
     'master/csse_covid_19_data/csse_covid_19_time_series/'];
-time_series_covid19_confirmed_global = [time_series_covid19_path ...
+  time_series_covid19_confirmed_global = [time_series_covid19_path ...
     'time_series_covid19_confirmed_global.csv'];
-time_series_covid19_deaths_global = [time_series_covid19_path ...
+  time_series_covid19_deaths_global = [time_series_covid19_path ...
     'time_series_covid19_deaths_global.csv'];
-time_series_covid19_recovered_global = [time_series_covid19_path ...
+  time_series_covid19_recovered_global = [time_series_covid19_path ...
     'time_series_covid19_recovered_global.csv'];
     
-data_src.confirmed = time_series_covid19_confirmed_global;
-data_src.deaths = time_series_covid19_deaths_global;
-data_src.recovered = time_series_covid19_recovered_global;
+  data_src.confirmed = time_series_covid19_confirmed_global;
+  data_src.deaths = time_series_covid19_deaths_global;
+  data_src.recovered = time_series_covid19_recovered_global;
 endfunction
 ```
