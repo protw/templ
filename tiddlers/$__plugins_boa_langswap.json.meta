@@ -7,4 +7,4 @@ plugin-type: plugin
 revision: 0
 title: $:/plugins/boa/langswap
 type: application/json
-version: 0.0.4
+version: 0.0.3
