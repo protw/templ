@@ -1,0 +1,6 @@
+created: 20200322111223060
+modified: 20200322111352323
+tags: $:/tags/Stylesheet
+title: $:/boa/css/tiddler-setting
+
+.tc-subtitle {display:none;}
