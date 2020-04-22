@@ -1,6 +1,6 @@
 caption: Стиль вмісту
 created: 20190922075139688
-modified: 20200214120735809
+modified: 20200321210947752
 order: 018
 tags: 
 title: $:/boa/custom-installed/shiraz
@@ -13,4 +13,6 @@ title: $:/boa/custom-installed/shiraz
 * локальне -- $:/plugins/kookma/shiraz
 * в інтернеті -- https://kookma.github.io/TW-Shiraz/
 
-{{$:/boa/macro/info-blocks}}
+<<alert-info "Додатково на основі Shiraz">>
+
+{{$:/plugins/boa/infoblocks/readme}}
