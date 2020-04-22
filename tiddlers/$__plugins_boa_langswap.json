@@ -54,10 +54,8 @@
         },
         "$:/plugins/boa/langswap/swapbutton": {
             "text": "<$button class=<<tv-config-toolbar-class>>>\n<$action-navigate $to={{!!swap}}/>\n<span title={{!!swap}}>{{$:/plugins/boa/langswap/img/swap.svg}}</span>\n</$button>",
-            "title": "$:/plugins/boa/langswap/swapbutton",
-            "description": "switching between identical pages in Ukrainian and English",
-            "caption": "{{$:/plugins/boa/langswap/img/swap.svg}} swapbutton",
             "type": "text/vnd.tiddlywiki",
+            "title": "$:/plugins/boa/langswap/swapbutton",
             "tags": "$:/tags/ViewToolbar"
         },
         "$:/plugins/boa/langswap/Content": {
