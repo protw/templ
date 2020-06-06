@@ -168,6 +168,8 @@ Error message and password prompt
 
 <li>$:/boa/custom-recommended/appear</li>
 
+<li>$:/boa/custom-recommended/checklist</li>
+
 <li>$:/boa/custom-recommended/contextplugin</li>
 
 <li>$:/boa/custom-recommended/fields2table</li>
@@ -264,6 +266,8 @@ Error message and password prompt
 
 <li>$:/isEncrypted</li>
 
+<li>$:/keepstate/utility/toggle-view-fields</li>
+
 <li>$:/plugins/ahahn/tinka</li>
 
 <li>$:/plugins/boa/infoblocks</li>
@@ -281,6 +285,8 @@ Error message and password prompt
 <li>$:/plugins/kookma/shiraz/styles/misc/ui-buttons</li>
 
 <li>$:/plugins/kookma/utility</li>
+
+<li>$:/plugins/kookma/utility/viewtemplate/view-fields</li>
 
 <li>$:/plugins/tiddlywiki/googleanalytics</li>
 
@@ -576,6 +582,16 @@ Error message and password prompt
 ; Розміщення:
 * локальне -- $:/plugins/tobibeer/appear
 * в інтернеті -- http://tobibeer.github.io/tw5-plugins/#appear
+</pre>
+</div>
+<div caption="Чекліст" created="20190822104139029" modified="20200606202121978" order="078" tags="" title="$:/boa/custom-recommended/checklist" revision="0" bag="default">
+<pre>!! ''Віджет //Checklist//''
+
+Віджет створює більш прості у використанні можливості управління чекбоксами у порівняння з віджетом &lt;&lt;mono checkbox&gt;&gt;, зокрема, для створення гранульованих списків фільтрації тідлерів - наприклад, див. [[тут|https://protw.github.io/#%24%3A%2Fboa%2Ffiltering%2Fby-tags]].
+
+; Розміщення:
+* локальне -- $:/core/modules/widgets/checklist.js
+* в інтернеті -- http://checklist.tiddlyspot.com/
 </pre>
 </div>
 <div caption="Пошук з підсвіткою" created="20191204201551246" modified="20191204202715866" order="072" tags="" title="$:/boa/custom-recommended/contextplugin" revision="0" bag="default">
@@ -10624,6 +10640,9 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
 <div title="$:/isEncrypted" revision="0" bag="default">
 <pre>no</pre>
 </div>
+<div created="20200606200714243" modified="20200606202001864" title="$:/keepstate/utility/toggle-view-fields" revision="0" bag="default">
+<pre>hide</pre>
+</div>
 <div author="Andreas Hahn" core-version="&gt;=5.1.8" dependents="" description="Tinka - an easy plugin packer" list="readme usage license" plugin-type="plugin" source="http://tinkaplugin.github.io" title="$:/plugins/ahahn/tinka" type="application/json" version="0.4.0" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -12093,6 +12112,101 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
         }
     }
 }</pre>
+</div>
+<div created="20181010162537613" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20200606202001864" tags="" title="$:/plugins/kookma/utility/viewtemplate/view-fields" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>\define lingo-base() $:/language/EditTemplate/
+\define config-title()
+$:/config/EditTemplateFields/Visibility/$(currentField)$
+\end
+
+\define config-filter()
+[[hide]] -[title{$(config-title)$}]
+\end
+
+\define new-field()
+&lt;$vars name={{$:/temp/newfieldname}}&gt;
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;&quot; default=&lt;&lt;name&gt;&gt;&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-add-field&quot;
+$name=&lt;&lt;name&gt;&gt;
+$value={{$:/temp/newfieldvalue}}/&gt;
+&lt;$action-deletetiddler $tiddler=&quot;$:/temp/newfieldname&quot;/&gt;
+&lt;$action-deletetiddler $tiddler=&quot;$:/temp/newfieldvalue&quot;/&gt;
+&lt;&lt;lingo Fields/Add/Button&gt;&gt;
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; text=&quot;&quot; default=&lt;&lt;name&gt;&gt;&gt;
+&lt;$button&gt;
+&lt;&lt;lingo Fields/Add/Button&gt;&gt;
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;/$vars&gt;
+\end
+
+&lt;div class=&quot;tc-edit-fields&quot;&gt;
+&lt;table class=&quot;tc-edit-fields&quot;&gt;
+&lt;tbody&gt;
+&lt;$list filter=&quot;[all[current]fields[]] +[sort[title]]&quot; variable=&quot;currentField&quot;&gt;
+&lt;$list filter=&lt;&lt;config-filter&gt;&gt; variable=&quot;temp&quot;&gt;
+&lt;tr class=&quot;tc-edit-field&quot;&gt;
+&lt;td class=&quot;tc-edit-field-name&quot;&gt;
+&lt;$text text=&lt;&lt;currentField&gt;&gt;/&gt;:&lt;/td&gt;
+&lt;td class=&quot;tc-edit-field-value&quot;&gt;
+&lt;$edit-text tiddler=&lt;&lt;currentTiddler&gt;&gt; field=&lt;&lt;currentField&gt;&gt; placeholder={{$:/language/EditTemplate/Fields/Add/Value/Placeholder}}/&gt;
+&lt;/td&gt;
+&lt;td class=&quot;tc-edit-field-remove&quot;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; tooltip={{$:/language/EditTemplate/Field/Remove/Hint}} aria-label={{$:/language/EditTemplate/Field/Remove/Caption}}&gt;
+&lt;$action-deletefield $field=&lt;&lt;currentField&gt;&gt;/&gt;
+{{$:/core/images/delete-button}}
+&lt;/$button&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;$fieldmangler&gt;
+&lt;div class=&quot;tc-edit-field-add&quot;&gt;
+&lt;em class=&quot;tc-edit&quot;&gt;
+&lt;&lt;lingo Fields/Add/Prompt&gt;&gt;
+&lt;/em&gt;
+&lt;span class=&quot;tc-edit-field-add-name&quot;&gt;
+&lt;$edit-text tiddler=&quot;$:/temp/newfieldname&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder={{$:/language/EditTemplate/Fields/Add/Name/Placeholder}} focusPopup=&lt;&lt;qualify &quot;$:/state/popup/field-dropdown&quot;&gt;&gt; class=&quot;tc-edit-texteditor tc-popup-handle&quot;/&gt;
+&lt;/span&gt;
+&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/field-dropdown&quot;&gt;&gt; class=&quot;tc-btn-invisible tc-btn-dropdown&quot; tooltip={{$:/language/EditTemplate/Field/Dropdown/Hint}} aria-label={{$:/language/EditTemplate/Field/Dropdown/Caption}}&gt;{{$:/core/images/down-arrow}}&lt;/$button&gt;
+&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/field-dropdown&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; default=&quot;&quot;&gt;
+&lt;div class=&quot;tc-block-dropdown tc-edit-type-dropdown&quot;&gt;
+&lt;$linkcatcher to=&quot;$:/temp/newfieldname&quot;&gt;
+&lt;div class=&quot;tc-dropdown-item&quot;&gt;
+&lt;&lt;lingo Fields/Add/Dropdown/User&gt;&gt;
+&lt;/div&gt;
+&lt;$list filter=&quot;[!is[shadow]!is[system]fields[]search:title{$:/temp/newfieldname}sort[]] -created -creator -draft.of -draft.title -modified -modifier -tags -text -title -type&quot;  variable=&quot;currentField&quot;&gt;
+&lt;$link to=&lt;&lt;currentField&gt;&gt;&gt;
+&lt;&lt;currentField&gt;&gt;
+&lt;/$link&gt;
+&lt;/$list&gt;
+&lt;div class=&quot;tc-dropdown-item&quot;&gt;
+&lt;&lt;lingo Fields/Add/Dropdown/System&gt;&gt;
+&lt;/div&gt;
+&lt;$list filter=&quot;[fields[]search:title{$:/temp/newfieldname}sort[]] -[!is[shadow]!is[system]fields[]]&quot; variable=&quot;currentField&quot;&gt;
+&lt;$link to=&lt;&lt;currentField&gt;&gt;&gt;
+&lt;&lt;currentField&gt;&gt;
+&lt;/$link&gt;
+&lt;/$list&gt;
+&lt;/$linkcatcher&gt;
+&lt;/div&gt;
+&lt;/$reveal&gt;
+&lt;span class=&quot;tc-edit-field-add-value&quot;&gt;
+&lt;$edit-text tiddler=&quot;$:/temp/newfieldvalue&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder={{$:/language/EditTemplate/Fields/Add/Value/Placeholder}} class=&quot;tc-edit-texteditor&quot;/&gt;
+&lt;/span&gt;
+&lt;span class=&quot;tc-edit-field-add-button&quot;&gt;
+&lt;$macrocall $name=&quot;new-field&quot;/&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;/$fieldmangler&gt;
+</pre>
 </div>
 <div author="JeremyRuston" contributor="Sylvain Comte" core-version="&gt;=5.0.0" dependents="" description="Google Analytics: website statistics" list="readme settings usage" plugin-type="plugin" title="$:/plugins/tiddlywiki/googleanalytics" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
