@@ -278,6 +278,8 @@ Error message and password prompt
 
 <li>$:/plugins/kookma/shiraz/macros/image-basic</li>
 
+<li>$:/plugins/kookma/shiraz/styles/colorful-sidebar-tab</li>
+
 <li>$:/plugins/kookma/shiraz/styles/misc/edit-buttons</li>
 
 <li>$:/plugins/kookma/shiraz/styles/misc/tiddler-button-visibility</li>
@@ -515,7 +517,7 @@ Error message and password prompt
 &gt;&gt;
 </pre>
 </div>
-<div caption="Стиль вмісту" created="20190922075139688" modified="20200321210947752" order="018" tags="" title="$:/boa/custom-installed/shiraz" revision="0" bag="default">
+<div caption="Стиль вмісту" created="20190922075139688" modified="20200607050451533" order="018" tags="" title="$:/boa/custom-installed/shiraz" revision="0" bag="default">
 <pre>!! ''Плагін //Shiraz//''
 
 //Shiraz// - це набір таблиць стилів (//CSS//) та макросів для створення стильного вмісту в //Tiddlywiki//. //Shiraz// налаштовує такі елементи, як сповіщення, картки, панелі, зображення, таблиці, значки, тексти, ...
@@ -523,6 +525,8 @@ Error message and password prompt
 ;Розміщення:
 * локальне -- $:/plugins/kookma/shiraz
 * в інтернеті -- https://kookma.github.io/TW-Shiraz/
+
+&lt;&lt;alert-warning &quot;Вибрані вкладки не всюди виділяються, наприклад, для вертикальних вкладок і вкладок на панелі керування. Питання вирішується легко шляхом видалення селектору &lt;$macrocall $name=mono src='.tc-sidebar-lists'/&gt; у файлі CSS-стилів  $:/plugins/kookma/shiraz/styles/colorful-sidebar-tab&quot;&gt;&gt;
 
 &lt;&lt;alert-info &quot;Додатково на основі Shiraz&quot;&gt;&gt;
 
@@ -11787,6 +11791,15 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
   &lt;figcaption&gt;$caption$&lt;/figcaption&gt;
 &lt;/figure&gt; 
 \end</pre>
+</div>
+<div created="20191209105546612" modified="20200607045508367" tags="$:/tags/Stylesheet" title="$:/plugins/kookma/shiraz/styles/colorful-sidebar-tab" type="text/css" revision="0" bag="default">
+<pre>.tc-tab-buttons button.tc-tab-selected {
+    background: none;
+    border: none;
+    border-bottom: solid 1px #737373 !important;
+    font-weight: bold;
+    color: #DB4C3F !important;
+}</pre>
 </div>
 <div created="20191029091851469" modified="20200201082022977" tags="$:/tags/Stylesheet" title="$:/plugins/kookma/shiraz/styles/misc/edit-buttons" type="text/css" revision="0" bag="default">
 <pre>/*Edit buttons as traffic lights*/
