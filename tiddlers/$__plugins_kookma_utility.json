@@ -158,11 +158,10 @@
         "$:/plugins/kookma/utility/macro/show-macro": {
             "title": "$:/plugins/kookma/utility/macro/show-macro",
             "created": "20190317174614898",
-            "description": "This is a customized version of `show-macro` used in TW-Yazd. This macro is used to display the macro codes in specified place.",
-            "modified": "20200123200937632",
+            "modified": "20201130152604002",
             "tags": "$:/tags/Macro",
             "type": "application/x-tiddler",
-            "text": "\\define disp-macro-contents(p)\n<pre>\\define<$text text=<<__p__>> />\\end</pre>\n\\end\n\n\\define show-macro(tiddler)\n<$set name=selected-tiddler value=\"$tiddler$\" emptyValue=<<currentTiddler>> >\n<$macrocall $name='find'\n  text={{{[<selected-tiddler>get[text]]}}}\n  begin=\"\\define\"\n  end=\"\\end\"\n  output=\"disp-macro-contents\"/>\n\\end"
+            "text": "\\define disp-macro-contents(p)\n<pre>\\define<$text text=<<__p__>> />\\end</pre>\n\\end\n\n\\define show-macro(tiddler)\n<$set name=selected-tiddler value=\"$tiddler$\" emptyValue=<<currentTiddler>> >\n<$macrocall $name='find'\n  text={{{[<selected-tiddler>get[text]]}}}\n  begin=\"\\define\"\n  end=\"\\end\"\n  output=\"disp-macro-contents\"/>\n</$set>\n\\end"
         },
         "$:/plugins/kookma/utility/macro/simple-navigation": {
             "title": "$:/plugins/kookma/utility/macro/simple-navigation",

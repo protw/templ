@@ -215,10 +215,10 @@
             "title": "$:/plugins/kookma/shiraz/macros/slider",
             "created": "20190322161929431",
             "description": "Slider macro shows (hides) its content.",
-            "modified": "20200325085502996",
+            "modified": "20201113161937207",
             "tags": "$:/tags/Macro",
             "type": "text/vnd.tiddlywiki",
-            "text": "\\define slider(label, src, labelClass, srcClass, status:\"closed\")\n<$set name=\"revealState\" value=<<qualify \"$:/state/shiraz/slider-macro/$(currentTiddler)$/$label$\">>>\n\n<h2 class=\"$labelClass$\">\n  <$reveal type=\"nomatch\" state=<<revealState>> text=\"open\" default=\"$status$\">\n    <$button class=\"tc-btn-invisible tc-tiddlylink\" set=<<revealState>> setTo=\"open\">\n     <span class=\"kk-sh-slider\"><$transclude tiddler=\"$:/core/images/right-arrow\" /></span>\n    </$button>\n  </$reveal>\n  <$reveal type=\"match\" state=<<revealState>> text=\"open\" default=\"$status$\">\n    <$button class=\"tc-btn-invisible tc-tiddlylink\" set=<<revealState>> setTo=\"closed\">\n      <span class=\"kk-sh-slider\"><$transclude tiddler=\"$:/core/images/down-arrow\" /></span>\n    </$button>\n  </$reveal>\n  $label$\n</h2>\n\n<$reveal type=\"match\" state=<<revealState>> text=\"open\" default=\"$status$\" class=\"$srcClass$\">\n\n$src$\n</$reveal>\n</$set>\n\\end"
+            "text": "\\define slider(label, src, labelClass, srcClass, status:\"closed\")\n<$set name=\"revealState\" value=\"\"\"$:/state/shiraz/slider-macro/$(currentTiddler)$/$label$\"\"\">\n\n<h2 class=\"$labelClass$\">\n  <$reveal type=\"nomatch\" state=<<revealState>> text=\"open\" default=\"$status$\">\n    <$button class=\"tc-btn-invisible tc-tiddlylink\" set=<<revealState>> setTo=\"open\">\n     <span class=\"kk-sh-slider\"><$transclude tiddler=\"$:/core/images/right-arrow\" /></span>\n    </$button>\n  </$reveal>\n  <$reveal type=\"match\" state=<<revealState>> text=\"open\" default=\"$status$\">\n    <$button class=\"tc-btn-invisible tc-tiddlylink\" set=<<revealState>> setTo=\"closed\">\n      <span class=\"kk-sh-slider\"><$transclude tiddler=\"$:/core/images/down-arrow\" /></span>\n    </$button>\n  </$reveal>\n  $label$\n</h2>\n\n<$reveal type=\"match\" state=<<revealState>> text=\"open\" default=\"$status$\" class=\"$srcClass$\">\n\n$src$\n</$reveal>\n</$set>\n\\end"
         },
         "$:/plugins/kookma/shiraz/macros/space": {
             "title": "$:/plugins/kookma/shiraz/macros/space",
@@ -576,8 +576,8 @@
             "title": "$:/plugins/kookma/shiraz/styles/tiddler-title-class",
             "text": ".title-primary .tc-title {\n  color: #007bff;\n}\n.title-secondary .tc-title {\n  color: #6c757d;\n}\n.title-success .tc-title {\n  color: #28a745;\n}\n.title-info .tc-title {\n  color: #17a2b8;\n}\n.title-warning .tc-title {\n  color: #ffc107;\n}\n.title-danger .tc-title {\n  color: #dc3545;\n}\n.title-light .tc-title {\n  color: #f8f9fa;\n}\n.title-dark .tc-title {\n  color: #343a40;\n}\n.title-white .tc-title {\n  color: #fff;\n}",
             "created": "20191101112257846",
-            "modified": "20200323093720140",
-            "tags": "test $:/tags/Stylesheet",
+            "modified": "20210212153844298",
+            "tags": "$:/tags/Stylesheet",
             "type": "text/css"
         },
         "$:/plugins/kookma/shiraz/templates/body/color": {
@@ -626,17 +626,17 @@
         },
         "$:/plugins/kookma/shiraz/templates/body/priority": {
             "title": "$:/plugins/kookma/shiraz/templates/body/priority",
-            "created": "20200206183739894",
-            "modified": "20200323093720180",
+            "created": "20200424102701026",
+            "modified": "20200424151646289",
             "tags": "$:/tags/Table/BodyTemplate",
             "tbl-column-list": "priority",
             "type": "text/vnd.tiddlywiki",
-            "text": "\\define circle(color, fill)\n<svg width=\"12\" height=\"12\" >\n<circle cx=\"6\" cy=\"6\" r=\"5\" stroke=<<__color__>>  fill=<<__fill__>> stroke-width=\"1\"/>\n</svg>\n\\end\n\n\\define showCell()\n<$list filter=\"[<currentRecord>get<currentColumn>match[very high]]\" variable=ignore>\n<$macrocall $name=\"circle\" color=\"#dc3545\" fill=\"#f8d7da\"/>\n</$list>\n<$list filter=\"[<currentRecord>get<currentColumn>match[high]]\" variable=ignore>\n<$macrocall $name=\"circle\" color=\"#ff8c00\" fill=\"#fff3cd\"/>\n</$list>\n<$list filter=\"[<currentRecord>get<currentColumn>match[normal]]\" variable=ignore>\n<$macrocall $name=\"circle\" color=\"#17a2b8\" fill=\"#d1ecf1\"/>\n</$list>\n<$list filter=\"[<currentRecord>get<currentColumn>match[low]]\" variable=ignore>\n<$macrocall $name=\"circle\" color=\"#007bff\" fill=\"#cce5ff\"/>\n</$list>\n<$list filter=\"[<currentRecord>get<currentColumn>match[very low]]\" variable=ignore>\n<$macrocall $name=\"circle\" color=\"#6c757d\" fill=\"#e2e3e5\"/>\n</$list>\n&nbsp; <$transclude tiddler=<<currentRecord>> field=<<currentColumn>> mode=\"inline\" />\n\\end\n\\define showCell_Locked() <span style=\"font-style:oblique;\"><<showCell>></span>\n\n\\define select_priority()\n<$select tiddler=<<currentRecord>> field=<<currentColumn>> default=\"\"><option value=''>Select...</option><option value='very high'>very high</option><option value='high'>high</option><option value='normal'>normal</option><option value='low'>low</option><option value='very low'>very low</option><option value=''>no priority</option></$select>\n\\end\n\n\n<$reveal type=\"nomatch\" stateTitle=<<tempTableEdit>> stateIndex=\"mode\" text=\"edit\" tag=\"td\">\n<<showCell>>\n</$reveal>\n<$reveal type=\"match\" stateTitle=<<tempTableEdit>> stateIndex=\"mode\" text=\"edit\" tag=\"td\">\n<!--check if the current column is not selected for sorting-->\n<$list filter=\"[<tempTableSort>getindex[sortIndex]match<currentColumn>]\" variable=ignore\nemptyMessage=<<select_priority>>   >\n <<showCell_Locked>>\n</$list>\n<$reveal>\n\n<!-- Part of Task Manager\n  this template ALWAYS works on fields -->"
+            "text": "\\define circle(color, fill)\n<svg width=\"12\" height=\"12\" >\n<circle cx=\"6\" cy=\"6\" r=\"5\" stroke=<<__color__>>  fill=<<__fill__>> stroke-width=\"1\"/>\n</svg>\n\\end\n\n\\define showCell()\n<$list filter=\"[<currentRecord>get<currentColumn>match[very high]]\" variable=ignore>\n<$macrocall $name=\"circle\" color=\"#dc3545\" fill=\"#f8d7da\"/>\n</$list>\n<$list filter=\"[<currentRecord>get<currentColumn>match[high]]\" variable=ignore>\n<$macrocall $name=\"circle\" color=\"#ff8c00\" fill=\"#fff3cd\"/>\n</$list>\n<$list filter=\"[<currentRecord>get<currentColumn>match[normal]]\" variable=ignore>\n<$macrocall $name=\"circle\" color=\"#17a2b8\" fill=\"#d1ecf1\"/>\n</$list>\n<$list filter=\"[<currentRecord>get<currentColumn>match[low]]\" variable=ignore>\n<$macrocall $name=\"circle\" color=\"#007bff\" fill=\"#cce5ff\"/>\n</$list>\n<$list filter=\"[<currentRecord>get<currentColumn>match[very low]]\" variable=ignore>\n<$macrocall $name=\"circle\" color=\"#6c757d\" fill=\"#e2e3e5\"/>\n</$list>\n&nbsp; <$transclude tiddler=<<currentRecord>> field=<<currentColumn>> />\n\\end\n\n\\define showCell_Locked() <span style=\"font-style:oblique;\"><<showCell>></span>\n\n\\define select_priority()\n<$select tiddler=<<currentRecord>> field=<<currentColumn>> default=\"\"><option value=''>Select...</option><option value='very high'>very high</option><option value='high'>high</option><option value='normal'>normal</option><option value='low'>low</option><option value='very low'>very low</option><option value=''>no priority</option></$select>\n\\end\n\n\n<$reveal type=\"nomatch\" stateTitle=<<tempTableEdit>> stateIndex=\"mode\" text=\"edit\" tag=\"td\">\n<<showCell>>\n</$reveal>\n<$reveal type=\"match\" stateTitle=<<tempTableEdit>> stateIndex=\"mode\" text=\"edit\" tag=\"td\">\n<!--check if the current column is not selected for sorting-->\n<$list filter=\"[<tempTableSort>getindex[sortIndex]match<currentColumn>]\" variable=ignore\nemptyMessage=<<select_priority>>   >\n <<showCell_Locked>>\n</$list>\n<$reveal>\n\n<!-- Part of Task Manager\n   this template ALWAYS works on fields\n  -->"
         },
         "$:/plugins/kookma/shiraz/templates/body/status": {
             "title": "$:/plugins/kookma/shiraz/templates/body/status",
-            "created": "20200206171854272",
-            "modified": "20200323093720186",
+            "created": "20200424100127763",
+            "modified": "20200424153213801",
             "tags": "$:/tags/Table/BodyTemplate",
             "tbl-column-list": "status",
             "type": "text/vnd.tiddlywiki",
@@ -659,6 +659,15 @@
             "tbl-column-list": "tbl-checkbox",
             "type": "text/vnd.tiddlywiki",
             "text": "<td style=\"width:28px;text-align:center;\">\n<$checkbox tiddler=<<currentRecord>> tag=\"done\"\ncheckactions=\"\"\"<$action-setfield $tiddler=<<tempTableStyle>> $index=<<currentRecord>> $value=\"color:#155724;background-color:#d4edda;\" /><$action-setfield $tiddler=<<currentRecord>> status=\"complete\"/>\"\"\"\nuncheckactions=\"\"\"<$action-setfield $tiddler=<<tempTableStyle>> $index=<<currentRecord>> /><$action-setfield $tiddler=<<currentRecord>> status=\"rework\"/>\"\"\" />\n</td>"
+        },
+        "$:/plugins/kookma/shiraz/templates/body/tbl-clone": {
+            "title": "$:/plugins/kookma/shiraz/templates/body/tbl-clone",
+            "created": "20201203153613838",
+            "modified": "20201203160230143",
+            "tags": "$:/tags/Table/BodyTemplate",
+            "tbl-column-list": "tbl-clone",
+            "type": "text/vnd.tiddlywiki",
+            "text": "\\define cloneTiddler() <$action-createtiddler $basetitle=<<currentRecord>> $template=<<currentRecord>> />\n\n<$list filter=\"[<tempTableEdit>getindex[mode]match[edit]]\" variable=ignore>\n<td style=\"width:28px;text-align:center;\">\n  <$button actions=<<cloneTiddler>> class=\"tc-btn-invisible\">\n\t  {{$:/core/images/clone-button}}\n\t</$button>\n</td>\n</$list>"
         },
         "$:/plugins/kookma/shiraz/templates/body/tbl-delete": {
             "title": "$:/plugins/kookma/shiraz/templates/body/tbl-delete",
@@ -704,6 +713,15 @@
             "type": "text/vnd.tiddlywiki",
             "text": "<$vars idx={{{ [<currentColumn>addsuffix[/]addsuffix<footerRow>] }}}>\n<$set name=getFieldOrIndex filter=\"[<fieldOrIndex>]-index\" value=\"get\" emptyValue=\"getindex\">\n<$reveal type=\"nomatch\" stateTitle=<<tempTableEdit>> stateIndex=\"mode\" text=\"edit\" tag=\"td\">\n<$transclude tiddler=<<tempTableFooter>> index=<<idx>> mode=\"inline\" />\n</$reveal>\n<$reveal type=\"match\" stateTitle=<<tempTableEdit>> stateIndex=\"mode\" text=\"edit\" tag=\"td\">\n<$edit-text tiddler=<<tempTableFooter>> index=<<idx>> tag=\"input\" class=\"shiraz-dtable-textbox\"/>\n</$reveal>\n</$set>\n</$vars>"
         },
+        "$:/plugins/kookma/shiraz/templates/footer/tbl-clone": {
+            "title": "$:/plugins/kookma/shiraz/templates/footer/tbl-clone",
+            "created": "20201203155343568",
+            "modified": "20201203160215983",
+            "tags": "$:/tags/Table/FooterTemplate",
+            "tbl-column-list": "tbl-clone",
+            "type": "text/vnd.tiddlywiki",
+            "text": "<$list filter=\"[<tempTableEdit>getindex[mode]match[edit]]\" variable=ignore>\n<td></td>\n</$list>"
+        },
         "$:/plugins/kookma/shiraz/templates/footer/tbl-delete": {
             "title": "$:/plugins/kookma/shiraz/templates/footer/tbl-delete",
             "created": "20200130174835714",
@@ -733,11 +751,20 @@
         "$:/plugins/kookma/shiraz/templates/header/tbl-checkbox": {
             "title": "$:/plugins/kookma/shiraz/templates/header/tbl-checkbox",
             "created": "20200206151157578",
-            "modified": "20200323093720262",
+            "modified": "20200424160122428",
             "tags": "$:/tags/Table/HeaderTemplate",
             "tbl-column-list": "tbl-checkbox",
             "type": "text/vnd.tiddlywiki",
             "text": "\\define chk-checkactions()\n<$list filter=\"[subfilter<inputFilter>]\" variable=\"currentRecord\">\n<$action-listops $tiddler=<<currentRecord>> $tags=\"+[append[done]]\" />\n<$action-setfield $tiddler=<<currentRecord>> status=\"complete\"/>\n<$action-setfield $tiddler=<<tempTableStyle>> $index=<<currentRecord>> $value=\"color:#155724;background-color:#d4edda;\" />\n</$list>\n\\end\n\\define chk-uncheckactions()\n<$list filter=\"[subfilter<inputFilter>]\" variable=\"currentRecord\">\n<$action-listops $tiddler=<<currentRecord>> $tags=\"+[remove[done]]\" />\n<$action-setfield $tiddler=<<currentRecord>> status=\"rework\"/>\n<$action-setfield $tiddler=<<tempTableStyle>> $index=<<currentRecord>> />\n</$list>\n\\end\n\n<th style=\"width:28px;\">\n<$checkbox checkactions=<<chk-checkactions>> uncheckactions=<<chk-uncheckactions>> />\n</th>"
+        },
+        "$:/plugins/kookma/shiraz/templates/header/tbl-clone": {
+            "title": "$:/plugins/kookma/shiraz/templates/header/tbl-clone",
+            "created": "20201203155440168",
+            "modified": "20201203160241400",
+            "tags": "$:/tags/Table/HeaderTemplate",
+            "tbl-column-list": "tbl-clone",
+            "type": "text/vnd.tiddlywiki",
+            "text": "<$list filter=\"[<tempTableEdit>getindex[mode]match[edit]]\" variable=ignore>\n<th style=\"width:28px;text-align:center;\">\n  <span>\n  <$button class=\"tc-btn-invisible\" disabled=yes>\n    {{$:/core/images/clone-button}}\n  </$button>\n  </span>\n</th>\n</$list>"
         },
         "$:/plugins/kookma/shiraz/templates/header/tbl-delete": {
             "title": "$:/plugins/kookma/shiraz/templates/header/tbl-delete",
